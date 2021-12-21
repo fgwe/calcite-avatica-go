@@ -29,7 +29,7 @@ limitations under the License.
 
 Apache Calcite Avatica Go 5.0.0 is a major release with numerous improvements and a breaking change.
 As this is a new major version, users of this package will need to upgrade their import paths to 
-`"github.com/apache/calcite-avatica-go/v5"`.
+`"github.com/fgwe/calcite-avatica-go/v5"`.
 
 Since Go modules have been available since Go 1.11 (3 versions back as of writing), users of this library should 
 install it using Go modules as support for dep has been removed.

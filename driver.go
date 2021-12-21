@@ -23,7 +23,7 @@ Quickstart
 Import the database/sql package along with the avatica driver.
 
 	import "database/sql"
-	import _ "github.com/apache/calcite-avatica-go/v5"
+	import _ "github.com/fgwe/calcite-avatica-go/v5"
 
 	db, err := sql.Open("avatica", "http://phoenix-query-server:8765")
 
@@ -37,10 +37,10 @@ import (
 	"database/sql/driver"
 	"net/http"
 
-	"github.com/apache/calcite-avatica-go/v5/generic"
-	"github.com/apache/calcite-avatica-go/v5/hsqldb"
-	"github.com/apache/calcite-avatica-go/v5/message"
-	"github.com/apache/calcite-avatica-go/v5/phoenix"
+	"github.com/fgwe/calcite-avatica-go/v5/generic"
+	"github.com/fgwe/calcite-avatica-go/v5/hsqldb"
+	"github.com/fgwe/calcite-avatica-go/v5/message"
+	"github.com/fgwe/calcite-avatica-go/v5/phoenix"
 	"github.com/hashicorp/go-uuid"
 	"golang.org/x/xerrors"
 )
@@ -63,7 +63,7 @@ func NewConnector(dsn string) driver.Connector {
 
 func (c *Connector) Connect(context.Context) (driver.Conn, error) {
 
-	config, err := ParseDSN(c.dsn)
+	_, config, err := ParseDSN(c.dsn)
 
 	if err != nil {
 		return nil, xerrors.Errorf("unable to open connection: %v", err)
@@ -140,7 +140,7 @@ func (c *Connector) Driver() driver.Driver {
 }
 
 // Open a Connection to the server.
-// See https://github.com/apache/calcite-avatica-go#dsn for more information
+// See https://github.com/fgwe/calcite-avatica-go#dsn for more information
 // on how the DSN is formatted.
 func (a *Driver) Open(dsn string) (driver.Conn, error) {
 	return NewConnector(dsn).Connect(context.TODO())

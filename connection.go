@@ -21,8 +21,8 @@ import (
 	"context"
 	"database/sql/driver"
 
-	"github.com/apache/calcite-avatica-go/v5/errors"
-	"github.com/apache/calcite-avatica-go/v5/message"
+	"github.com/fgwe/calcite-avatica-go/v5/errors"
+	"github.com/fgwe/calcite-avatica-go/v5/message"
 	"golang.org/x/xerrors"
 )
 

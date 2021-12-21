@@ -20,7 +20,7 @@ package avatica
 import (
 	"strings"
 
-	avaticaMessage "github.com/apache/calcite-avatica-go/v5/message"
+	avaticaMessage "github.com/fgwe/calcite-avatica-go/v5/message"
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/xerrors"
 )

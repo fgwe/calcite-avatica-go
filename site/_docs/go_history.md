@@ -24,11 +24,11 @@ limitations under the License.
 -->
 
 For a full list of releases, see
-<a href="https://github.com/apache/calcite-avatica-go/releases">github</a>.
+<a href="https://github.com/fgwe/calcite-avatica-go/releases">github</a>.
 Downloads are available on the
 [downloads page]({{ site.baseurl }}/downloads/avatica-go.html).
 
-## <a href="https://github.com/apache/calcite-avatica-go/releases/tag/v5.0.0">5.0.0</a> / 2020-07-16
+## <a href="https://github.com/fgwe/calcite-avatica-go/releases/tag/v5.0.0">5.0.0</a> / 2020-07-16
 {: #v5-0-0}
 
 Apache Calcite Avatica Go 5.0.0 is a major release of Avatica Go with a number of improvements and a breaking change.
@@ -89,7 +89,7 @@ Web site and documentation:
 
 * Clean up documentation and remove references to dep
  
-## <a href="https://github.com/apache/calcite-avatica-go/releases/tag/v4.0.0">4.0.0</a> / 2019-05-16
+## <a href="https://github.com/fgwe/calcite-avatica-go/releases/tag/v4.0.0">4.0.0</a> / 2019-05-16
 {: #v4-0-0}
 
 Apache Calcite Avatica Go 4.0.0 is a major release of Avatica Go with a number of improvements and a breaking change.
@@ -145,14 +145,14 @@ Web site and documentation:
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-3033">CALCITE-3033</a>]
   Move release process to separate HOWTO document so that it's consistent with how the avatica docs are structured
  
-## <a href="https://github.com/apache/calcite-avatica-go/releases/tag/v3.2.0">3.2.0</a> / 2018-09-18
+## <a href="https://github.com/fgwe/calcite-avatica-go/releases/tag/v3.2.0">3.2.0</a> / 2018-09-18
 {: #v3-2-0}
 
 Apache Calcite Avatica Go 3.2.0 is a minor release of Avatica Go with fixes to the import paths after enabling
 support for Go modules.
 
-The 3.1.0 release contained a bug where packages within the library used the `"github.com/apache/calcite-avatica-go"`
-import path rather than the `"github.com/apache/calcite-avatica-go/v3"` import path. This resulted in an issue where
+The 3.1.0 release contained a bug where packages within the library used the `"github.com/fgwe/calcite-avatica-go"`
+import path rather than the `"github.com/fgwe/calcite-avatica-go/v3"` import path. This resulted in an issue where
 2 versions of the library are being used at the same time, causing some programs to not build.
 
 **The Calcite team recommends consumers of the Avatica Go library to not use the 3.1.0 release and ensure that the
@@ -163,7 +163,7 @@ Features and bug fixes
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-2536">CALCITE-2536</a>]
   Update release script to check that import paths within the library point to the correct version
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-2545">CALCITE-2545</a>]
-  Fix incorrect import paths within the library to point to the correct version: github.com/apache/calcite-avatica-go/v3
+  Fix incorrect import paths within the library to point to the correct version: github.com/fgwe/calcite-avatica-go/v3
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-2544">CALCITE-2544</a>]
   Replace the golang.org/x/net/context package with the context package in the standard library
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-2547">CALCITE-2547</a>]
@@ -171,7 +171,7 @@ Features and bug fixes
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-2550">CALCITE-2550</a>]
   Update release script to build tarballs with filenames in the format: apache-calcite-avatica-go-x.x.x-src.tar.gz
 
-## <a href="https://github.com/apache/calcite-avatica-go/releases/tag/v3.1.0">3.1.0</a> / 2018-09-10
+## <a href="https://github.com/fgwe/calcite-avatica-go/releases/tag/v3.1.0">3.1.0</a> / 2018-09-10
 {: #v3-1-0}
 
 Apache Calcite Avatica Go 3.1.0 is a minor release of Avatica Go with support for Go modules.
@@ -216,7 +216,7 @@ Web site and documentation
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-2335">CALCITE-2335</a>]
   Update documentation and release instructions to include support for Go modules.
 
-## <a href="https://github.com/apache/calcite-avatica-go/releases/tag/3.0.0">3.0.0</a> / 2018-04-27
+## <a href="https://github.com/fgwe/calcite-avatica-go/releases/tag/3.0.0">3.0.0</a> / 2018-04-27
 {: #v3-0-0}
 
 Apache Calcite Avatica Go 3.0.0 is the first release since the Go driver has been donated
@@ -227,7 +227,7 @@ Features and bug fixes
 
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-1240">CALCITE-1240</a>]
   Intial import of the original [Boostport/avatica](https://github.com/Boostport/avatica) code-base into the
-  [apache/calcite-avatica-go](https://github.com/apache/calcite-avatica-go) repository
+  [apache/calcite-avatica-go](https://github.com/fgwe/calcite-avatica-go) repository
 * [<a href="https://issues.apache.org/jira/browse/CALCITE-1938">CALCITE-1938</a>]
   Releasing the first release of Calcite Avatica Go under the Apache Software Foundation
 * Remove go-cleanhttp dependency

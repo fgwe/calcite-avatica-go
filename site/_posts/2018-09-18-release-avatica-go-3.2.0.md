@@ -30,8 +30,8 @@ limitations under the License.
 Apache Calcite Avatica Go 3.2.0 is a minor release of Avatica Go with fixes to the import paths after enabling
 support for Go modules.
 
-The 3.1.0 release contained a bug where packages within the library used the `"github.com/apache/calcite-avatica-go"`
-import path rather than the `"github.com/apache/calcite-avatica-go/v3"` import path. This resulted in an issue where
+The 3.1.0 release contained a bug where packages within the library used the `"github.com/fgwe/calcite-avatica-go"`
+import path rather than the `"github.com/fgwe/calcite-avatica-go/v3"` import path. This resulted in an issue where
 2 versions of the library are being used at the same time, causing some programs to not build.
 
 **The Calcite team recommends consumers of the Avatica Go library to not use the 3.1.0 release and ensure that the

@@ -38,7 +38,7 @@ hood.
 Install using Go modules:
 
 {% highlight shell %}
-$ go get github.com/apache/calcite-avatica-go
+$ go get github.com/fgwe/calcite-avatica-go
 {% endhighlight %}
 
 
@@ -49,7 +49,7 @@ The Avatica Go driver implements Go's `database/sql/driver` interface, so, impor
 
 {% highlight go %}
 import "database/sql"
-import _ "github.com/apache/calcite-avatica-go/v5"
+import _ "github.com/fgwe/calcite-avatica-go/v5"
 
 db, err := sql.Open("avatica", "http://localhost:8765")
 {% endhighlight %}

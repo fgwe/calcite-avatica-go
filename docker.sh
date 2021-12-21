@@ -218,7 +218,7 @@ check_import_paths(){
     TAG_MAJOR_VERSION=$(echo $1 | sed -e 's/\..*//')
 
     # Check that go.mod's module path contains the right version
-    if ! grep -Fq "module github.com/apache/calcite-avatica-go/$TAG_MAJOR_VERSION" go.mod; then
+    if ! grep -Fq "module github.com/fgwe/calcite-avatica-go/$TAG_MAJOR_VERSION" go.mod; then
         echo "Module declaration in go.mod does not contain the correct version. Expected: $TAG_MAJOR_VERSION"
         exit 1
     fi
@@ -232,13 +232,13 @@ check_import_paths(){
             continue
         fi
 
-        lines=$(grep -F -s '"github.com/apache/calcite-avatica-go' $i) || true
+        lines=$(grep -F -s '"github.com/fgwe/calcite-avatica-go' $i) || true
 
         if ! [[ -z "$lines" ]]; then
             while read -r line; do
-                if ! grep -q "github.com/apache/calcite-avatica-go/$TAG_MAJOR_VERSION" <<< "$line" ; then
+                if ! grep -q "github.com/fgwe/calcite-avatica-go/$TAG_MAJOR_VERSION" <<< "$line" ; then
                     BAD_IMPORT_PATHS=true
-                    echo "Import for github.com/apache/calcite-avatica-go in $i does not have the correct version ($TAG_MAJOR_VERSION) in its path"
+                    echo "Import for github.com/fgwe/calcite-avatica-go in $i does not have the correct version ($TAG_MAJOR_VERSION) in its path"
                 fi
             done <<< "$lines"
         fi
@@ -452,7 +452,7 @@ Hi all,
 I have created a release for Apache Calcite Avatica Go $TAG_WITHOUT_RC, release candidate $RC_NUMBER.
 
 Thanks to everyone who has contributed to this release. The release notes are available here:
-https://github.com/apache/calcite-avatica-go/blob/$COMMIT/site/_docs/go_history.md
+https://github.com/fgwe/calcite-avatica-go/blob/$COMMIT/site/_docs/go_history.md
 
 The commit to be voted on:
 https://gitbox.apache.org/repos/asf?p=calcite-avatica-go.git;a=commit;h=$COMMIT
@@ -469,7 +469,7 @@ Release artifacts are signed with the following key:
 https://people.apache.org/keys/committer/$ASF_USERNAME.asc
 
 Instructions for running the test suite is located here:
-https://github.com/apache/calcite-avatica-go/blob/$COMMIT/site/develop/avatica-go.md#testing
+https://github.com/fgwe/calcite-avatica-go/blob/$COMMIT/site/develop/avatica-go.md#testing
 
 Please vote on releasing this package as Apache Calcite Avatica Go $TAG_WITHOUT_RC.
 
@@ -589,7 +589,7 @@ compile_protobuf(){
     mkdir /tmp/avatica
     cd /tmp/avatica
     git init
-    git remote add origin https://github.com/apache/calcite-avatica.git
+    git remote add origin https://github.com/fgwe/calcite-avatica.git
     git config core.sparsecheckout true
     echo "core/src/main/protobuf/*" >> .git/info/sparse-checkout
 

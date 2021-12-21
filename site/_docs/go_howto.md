@@ -128,7 +128,7 @@ Hi all,
 I have created a build for Apache Calcite Avatica Go X.Y.Z, release candidate N.
 
 Thanks to everyone who has contributed to this release. The release notes are available here:
-https://github.com/apache/calcite-avatica-go/blob/XXXX/site/_docs/go_history.md
+https://github.com/fgwe/calcite-avatica-go/blob/XXXX/site/_docs/go_history.md
 
 The commit to be voted upon:
 https://gitbox.apache.org/repos/asf?p=calcite-avatica-go.git;a=commit;h=NNNNNN
@@ -145,7 +145,7 @@ Release artifacts are signed with the following key:
 https://people.apache.org/keys/committer/francischuang.asc
 
 Instructions for running the test suite is located here:
-https://github.com/apache/calcite-avatica-go/blob/$COMMIT/site/develop/avatica-go.md#testing
+https://github.com/fgwe/calcite-avatica-go/blob/$COMMIT/site/develop/avatica-go.md#testing
 
 Please vote on releasing this package as Apache Calcite Avatica Go X.Y.Z.
 

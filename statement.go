@@ -24,7 +24,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/apache/calcite-avatica-go/v5/message"
+	"github.com/fgwe/calcite-avatica-go/v5/message"
 	"golang.org/x/xerrors"
 )
 

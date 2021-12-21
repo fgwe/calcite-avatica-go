@@ -1,4 +1,4 @@
-module github.com/apache/calcite-avatica-go/v5
+module github.com/fgwe/calcite-avatica-go/v5
 
 go 1.12
 

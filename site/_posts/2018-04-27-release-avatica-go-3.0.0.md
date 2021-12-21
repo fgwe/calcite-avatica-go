@@ -36,4 +36,4 @@ There is a breaking change where the `Name()` method on the `ResponseError` erro
 Users of the current `Boostport/avatica` library are encouraged to update to this new version of `apache/calcite-avatica-go`
 as further development will take place in the `apache/calcite-avatica-go` repository.
 
-For most users, the updating is simply replacing the import path `_ github.com/Boostport/avatica` with `_ github.com/apache/calcite-avatica-go`.
+For most users, the updating is simply replacing the import path `_ github.com/Boostport/avatica` with `_ github.com/fgwe/calcite-avatica-go`.

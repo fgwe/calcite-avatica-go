@@ -22,9 +22,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/apache/calcite-avatica-go/v5/errors"
-	"github.com/apache/calcite-avatica-go/v5/internal"
-	"github.com/apache/calcite-avatica-go/v5/message"
+	"github.com/fgwe/calcite-avatica-go/v5/errors"
+	"github.com/fgwe/calcite-avatica-go/v5/internal"
+	"github.com/fgwe/calcite-avatica-go/v5/message"
 )
 
 type Adapter struct {
