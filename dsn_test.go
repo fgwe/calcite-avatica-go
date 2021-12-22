@@ -25,7 +25,7 @@ import (
 
 func TestParseDSN(t *testing.T) {
 
-	config, err := ParseDSN("http://localhost:8765/myschema?maxRowsTotal=1&frameMaxSize=1&location=Australia/Melbourne&transactionIsolation=8&authentication=BASIC&avaticaUser=someuser&avaticaPassword=somepassword")
+	_, config, err := ParseDSN("http://localhost:8765/myschema?maxRowsTotal=1&frameMaxSize=1&location=Australia/Melbourne&transactionIsolation=8&authentication=BASIC&avaticaUser=someuser&avaticaPassword=somepassword")
 
 	if err != nil {
 		t.Fatalf("Unexpected error: %s", err)
@@ -70,7 +70,7 @@ func TestParseDSN(t *testing.T) {
 
 func TestParseDSNProxy(t *testing.T) {
 
-	config, err := ParseDSN("http://localhost:8765/service/proxy/myschema?authentication=BASIC&avaticaUser=someuser&avaticaPassword=somepassword")
+	_, config, err := ParseDSN("http://localhost:8765/service/proxy/myschema?authentication=BASIC&avaticaUser=someuser&avaticaPassword=somepassword")
 
 	if err != nil {
 		t.Fatalf("Unexpected error: %s", err)
@@ -99,7 +99,7 @@ func TestParseDSNProxy(t *testing.T) {
 
 func TestParseEmptyDSN(t *testing.T) {
 
-	_, err := ParseDSN("")
+	_, _, err := ParseDSN("")
 
 	if err == nil {
 		t.Fatal("Expected error due to empty DSN, but received nothing")
@@ -108,7 +108,7 @@ func TestParseEmptyDSN(t *testing.T) {
 
 func TestDSNDefaults(t *testing.T) {
 
-	config, err := ParseDSN("http://localhost:8765")
+	_, config, err := ParseDSN("http://localhost:8765")
 
 	if err != nil {
 		t.Fatalf("Unexpected error: %s", err)
@@ -167,7 +167,7 @@ func TestDSNDefaults(t *testing.T) {
 
 func TestDSNDefaultsProxy(t *testing.T) {
 
-	config, err := ParseDSN("http://localhost:8765/service/proxy/")
+	_, config, err := ParseDSN("http://localhost:8765/service/proxy/")
 
 	if err != nil {
 		t.Fatalf("Unexpected error: %s", err)
@@ -226,7 +226,7 @@ func TestDSNDefaultsProxy(t *testing.T) {
 
 func TestLocalLocation(t *testing.T) {
 
-	config, err := ParseDSN("http://localhost:8765?location=Local")
+	_, config, err := ParseDSN("http://localhost:8765?location=Local")
 
 	if err != nil {
 		t.Fatalf("Unexpected error: %s", err)
@@ -239,19 +239,19 @@ func TestLocalLocation(t *testing.T) {
 
 func TestBadInput(t *testing.T) {
 
-	_, err := ParseDSN("http://localhost:8765?location=asdfasdf")
+	_, _, err := ParseDSN("http://localhost:8765?location=asdfasdf")
 
 	if err == nil {
 		t.Fatal("Expected error due to invalid location, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?maxRowsTotal=abc")
+	_, _, err = ParseDSN("http://localhost:8765?maxRowsTotal=abc")
 
 	if err == nil {
 		t.Fatal("Expected error due to invalid maxRowsTotal, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?frameMaxSize=abc")
+	_, _, err = ParseDSN("http://localhost:8765?frameMaxSize=abc")
 
 	if err == nil {
 		t.Fatal("Expected error due to invalid frameMaxSize, but did not receive any.")
@@ -264,7 +264,7 @@ func TestInvalidTransactionIsolation(t *testing.T) {
 
 	for _, isolationLevel := range badIsolationLevels {
 
-		_, err := ParseDSN("http://localhost:8765?transactionIsolation=" + strconv.Itoa(isolationLevel))
+		_, _, err := ParseDSN("http://localhost:8765?transactionIsolation=" + strconv.Itoa(isolationLevel))
 
 		if err == nil {
 			t.Fatal("Expected error due to invalid transactionIsolation, but did not receive any.")
@@ -278,7 +278,7 @@ func TestValidTransactionIsolation(t *testing.T) {
 
 	for _, isolationLevel := range validIsolationLevels {
 
-		_, err := ParseDSN("http://localhost:8765?transactionIsolation=" + strconv.Itoa(isolationLevel))
+		_, _, err := ParseDSN("http://localhost:8765?transactionIsolation=" + strconv.Itoa(isolationLevel))
 
 		if err != nil {
 			t.Fatalf("Unexpected error when %d is set as the isolation level: %s", isolationLevel, err)
@@ -288,75 +288,75 @@ func TestValidTransactionIsolation(t *testing.T) {
 
 func TestInvalidAuthentication(t *testing.T) {
 
-	_, err := ParseDSN("http://localhost:8765?authentication=ASDF")
+	_, _, err := ParseDSN("http://localhost:8765?authentication=ASDF")
 
 	if err == nil {
 		t.Fatal("Expected error due to invalid authentication, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=BASIC")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=BASIC")
 
 	if err == nil {
 		t.Fatal("Expected error due to missing avaticaUser and avaticaPassword, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=BASIC&avaticaUser=test")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=BASIC&avaticaUser=test")
 
 	if err == nil {
 		t.Fatal("Expected error due to missing avaticaPassword, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=BASIC&avaticaPassword=test")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=BASIC&avaticaPassword=test")
 
 	if err == nil {
 		t.Fatal("Expected error due to missing avaticaUser, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&principal=test/test@realm&krb5Conf=/path/to/krb5.conf")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&principal=test/test@realm&krb5Conf=/path/to/krb5.conf")
 
 	if err == nil {
 		t.Fatal("Expected error due to missing keytab, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&keytab=/path/to/file.keytab&krb5Conf=/path/to/krb5.conf")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&keytab=/path/to/file.keytab&krb5Conf=/path/to/krb5.conf")
 
 	if err == nil {
 		t.Fatal("Expected error due to missing principal, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&principal=test/test@realm&keytab=/path/to/file.keytab")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&principal=test/test@realm&keytab=/path/to/file.keytab")
 
 	if err == nil {
 		t.Fatal("Expected error due to missing krb5Conf, but did not receive any.")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=SPNEGO")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=SPNEGO")
 
 	if err == nil {
-		t.Fatal("Expected error due to invalid SPNEGO config, but did not receive any.")
+		t.Fatal("Expected error due to invalid SPNEGO _,config, but did not receive any.")
 	}
 }
 
 func TestValidAuthentication(t *testing.T) {
-	_, err := ParseDSN("http://localhost:8765?authentication=BASIC&avaticaUser=test&avaticaPassword=test")
+	_, _, err := ParseDSN("http://localhost:8765?authentication=BASIC&avaticaUser=test&avaticaPassword=test")
 
 	if err != nil {
 		t.Fatal("Unexpected error when DSN contains an authentication method, avaticaUser and avaticaPassword")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=DIGEST&avaticaUser=test&avaticaPassword=test")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=DIGEST&avaticaUser=test&avaticaPassword=test")
 
 	if err != nil {
 		t.Fatal("Unexpected error when DSN contains an authentication method, avaticaUser and avaticaPassword")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&principal=test/test@realm&keytab=/path/to/file.keytab&krb5Conf=/path/to/krb5.conf")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&principal=test/test@realm&keytab=/path/to/file.keytab&krb5Conf=/path/to/krb5.conf")
 
 	if err != nil {
 		t.Fatal("Unexpected error when DSN contains an authentication method, principal and keytab and krb5Conf")
 	}
 
-	_, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&krb5CredentialCache=/path/to/cache")
+	_, _, err = ParseDSN("http://localhost:8765?authentication=SPNEGO&krb5CredentialCache=/path/to/cache")
 
 	if err != nil {
 		t.Fatal("Unexpected error when DSN contains an authentication method with path to the credential cache")

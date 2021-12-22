@@ -63,7 +63,8 @@ func NewConnector(dsn string) driver.Connector {
 
 func (c *Connector) Connect(context.Context) (driver.Conn, error) {
 
-	_, config, err := ParseDSN(c.dsn)
+	property, config, err := ParseDSN(c.dsn)
+	c.Info = property
 
 	if err != nil {
 		return nil, xerrors.Errorf("unable to open connection: %v", err)

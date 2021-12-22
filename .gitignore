@@ -31,7 +31,6 @@ settings.xml
 .classpath
 .settings
 .checkstyle
-./test
 
 # netbeans
 nb-configuration.xml
